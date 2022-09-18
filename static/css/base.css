@@ -1,0 +1,39 @@
+@font-face{
+    font-family: 'Custom-Font';
+    src: url('../font/Tangerine-Bold.ttf');
+}
+
+.p-logo-text{
+    font-family: Custom-Font;
+    font-size: 32px;
+    color: #DC4C7D !important;
+    text-decoration: none;
+}
+
+
+.list-inline-item a{
+    color: #DD4E7C;
+}
+.list-inline-item a:hover{
+  color: #AC2F81;
+}
+
+#button-addon1 {
+    color: #DD4E7C;
+  }
+  
+  i {
+    color: #DD4E7C;
+  }
+  
+  .form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+  }
+  
+  .form-control.shadow-0:focus {
+    box-shadow: none;
+  }
+
+  

@@ -1,0 +1,80 @@
+textarea{
+	min-height: 90px;
+}
+
+
+.c-image{
+	width: 30rem;
+	margin-top: 4rem;
+}
+
+.c-alert{
+	width: 20rem;
+	height: 50px;
+	padding-top: 10px;
+}
+
+.c-input{
+	margin-bottom: 1rem;
+	width: 25rem;
+	height: 40px;
+	padding: 6px;
+	border: 1px solid #aaa;
+	border-radius: 5px;
+	padding-left: 10px;
+}
+
+
+.c-button{
+	width: 10rem;
+    border: 1px solid #8444B2;
+    color: #8444B2;
+    background-color: #fff;
+    padding: 5px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    transition: .4s;
+    
+}
+.c-button:hover{
+    color: white;
+    background-color: #8444B2;
+}
+
+
+.contact-us{
+	text-align: center !important;
+	box-shadow: rgb(220, 220, 220) 0 0 20px;
+	border-radius: 20px;
+	margin-top: 50px;
+	overflow: hidden;
+}
+
+
+
+.alert {
+  position: fixed !important;
+  top: 150px;
+  right: 20px;
+  padding: 20px;
+  width: 250px;
+  background-color: #1ED760;
+  color: white;
+  transition: 0.3s;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

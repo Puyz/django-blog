@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static%}
+{% block css %} 
+<link rel="stylesheet" href="{% static 'css/contact.css' %}"> 
+<link rel="stylesheet" href="{% static 'css/animate.min.css' %}"> 
+{% endblock css %}
+
+{% block title %} İletişim {% endblock title %}
+
+{% block dropdown%}
+    {% for category in categories %}
+        <li><a class="dropdown-item" href="/yazilim/{{category.slug}}">{{category.name}}</a></li>
+    {% endfor %}
+{% endblock dropdown %}  
+
+{% block body %}
+    
+<div class="container">
+    <div class="row  contact-us my-5 py-5">
+
+        <div class="col-lg-6">
+            <img src="{% static 'img/contact.png' %}" class="c-image">
+        </div>
+
+        <div class="col-lg-6">
+            <h2 class="my-5 text-muted">Bize Ulaşın</h2>
+            <form action="sendmessage" method="POST">
+                 {% csrf_token %}
+                <input type="text" class="c-input" name="name" id="name" placeholder="Adınız" required>
+                <input type="email" class=" c-input" name="email" id="email" placeholder="Mail adresiniz" required>
+                <textarea name="message" id="message" class="c-input" placeholder="Mesajınız" required></textarea><br>
+                <button type="submit" class="c-button">Gönder</button>     
+                <ul class="list-inline mb-5">
+                    <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fa fa-globe"></i></a></li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% if 'success' in request.GET%}
+<div class='alert text-center animate__animated animate__flipInX'>
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+     Mesajınız gönderildi.
+</div>
+                
+{% endif %}
+
+{% endblock body %}
+
+    

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %} {{ object.title }} {% endblock title %}
+{% load static%}
+
+{% block css %} 
+<link rel="stylesheet" href="{% static 'css/prism.css' %}">
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+{% endblock css %}
+
+{% block dropdown%}
+    {% for category in categories %}
+        <li><a class="dropdown-item" href="/yazilim/{{category.slug}}">{{category.name}}</a></li>
+    {% endfor %}
+{% endblock dropdown %}
+
+
+    
+{% block body %}
+    <div class="container"> 
+        <div class="post-entry text-center">
+            <img src="/{{ object.imageurl }}">
+            <h2 class="my-5"> {{ object.title }}</h2>
+            <div class="d-flex justify-content-center text-muted">
+                <h6 class="card-info mx-3"><i class="fas fa-calendar-alt"></i> {{object.created_datetime}}</h6>
+                <h6 class="card-info mx-3"><i class="far fa-eye"></i> {{object.views}}</h6>
+            </div>
+            <hr>
+            <pre class="h5-pre"><h5 class="text-muted my-5">{{object.body}}</h5></pre>
+            {% if object.code %}
+            <pre class="my-5">
+                <code class="language-{{object.sub_category.slug}}">
+                    {{object.code}}
+                </code>    
+            </pre>
+            {% endif %}
+                
+        </div>
+
+        <hr>
+
+        <div class="box-posts">
+            <h4 class="text-muted">Şunlar da hoşunuza gidebilir</h4>
+            <div class="row">
+
+                {% for post in categoryPosts %}
+                
+                <div class="card" style="width: 18rem;">
+                    <img src="/{{post.imageurl}}" class="card-img-top" onerror="this.src='{% static 'img/default.png' %}'">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <p class="card-text">{{post.body}}</p>
+                        <a href="/post/{{post.pk}}" class="btn btn-primary">Devamını oku</a>
+                    </div>
+                </div>
+
+                {% endfor %}
+                
+
+            </div>
+    </div>
+
+
+    </div>
+ 
+
+{% endblock body %}
+
+
+
+{% block js %}
+<script src="{% static 'js/prism.js' %}"></script>
+{% endblock js %}
+    
+

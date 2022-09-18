@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load static%}
+{% block css %} 
+<link rel="stylesheet" href="{% static 'css/posts.css' %}"> 
+{% endblock css %}
+
+{% block title %} Kategori - {{language.name}} {% endblock title %}
+
+{% block dropdown%}
+    {% for category in categories %}
+        <li><a class="dropdown-item" href="/yazilim/{{category.slug}}">{{category.name}}</a></li>
+    {% endfor %}
+{% endblock dropdown %}  
+
+{% block body %}
+    <div class="container">
+        <div class="text-center">
+        <h2 class="text-muted">{{language.name}}</h2>
+        <hr>
+        </div>
+        {% for post in posts %}
+
+        <div class="card mb-3 post-box" style="max-width: 60rem;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                <img class="post-image" src="/{{post.imageurl}}" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <img class="card-avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="{{post.author}}" src="{% static 'img/avatar.png' %}">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <p class="card-text">{{post.body}}</p>
+                        <div class="d-flex justify-content-start text-muted">
+                            <h6 class="card-info"><i class="fas fa-calendar-alt "></i> {{post.created_datetime}}</h6>
+                            <h6 class="card-info"><i class="far fa-eye"></i> {{post.views}}</h6>
+                            <a class="card-button" href="/post/{{post.pk}}">Devamını oku</a>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+        </div> 
+        {% endfor %}
+
+
+        {{posts.page_range}}
+        <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% endif %}
+            
+
+            {% for i in page_obj.paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <li class="page-item active"><span  class="page-link">{{ i }}</span></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+
+
+
+            
+            {% if page_obj.has_next %}
+                <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                </li>
+            {% endif %}
+            
+        </ul>
+        </nav>
+
+
+    </div>
+    {% endblock body %}
+
+    

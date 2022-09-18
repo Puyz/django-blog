@@ -1,0 +1,43 @@
+@media screen and (max-width:1450px)
+{
+  
+    .software_categories{
+        display: none !important;
+    }
+}
+
+.btn-category{
+    text-decoration: none;
+    border: none;
+    color: #777777;
+    border-radius: 5px;
+    font-size: larger;
+    transition: .3s;
+}
+.btn-category::before{
+    content: '';
+    position: absolute;
+    left: 1.5rem;
+    margin-top: .68rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    background: #FF886F;
+}
+
+.btn-category:hover  {
+    color: #000;
+}
+.btn-category:hover .btn-category::before{
+        background-color: red;
+}
+
+
+.software_categories{
+    position: fixed;
+    right: 3rem;
+    padding: 1rem 3rem;
+    box-shadow: rgb(195, 195, 195) 0 0 10px;
+    border-radius: 10px;
+}
+
